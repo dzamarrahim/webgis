@@ -26,5 +26,9 @@ class HomeController extends Controller
         return view('home');
     }
 
+    public function simple_map() {
+        return view('leaflet.simple-map');
+    }
+
     
 }
