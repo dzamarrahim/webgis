@@ -30,5 +30,9 @@ class HomeController extends Controller
         return view('leaflet.simple-map');
     }
 
+    public function marker() {
+        return view('leaflet.marker');
+    }
+
     
 }
