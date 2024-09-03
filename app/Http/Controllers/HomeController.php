@@ -38,5 +38,9 @@ class HomeController extends Controller
         return view('leaflet.circle');
     }
 
+    public function polygon() {
+        return view('leaflet.polygon');
+    }
+
     
 }
