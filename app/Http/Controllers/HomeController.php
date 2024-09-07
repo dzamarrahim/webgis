@@ -45,5 +45,9 @@ class HomeController extends Controller
     public function polyline() {
         return view('leaflet.polyline');
     }
+    
+    public function rectangle() {
+        return view('leaflet.rectangle');
+    }
 
 }
