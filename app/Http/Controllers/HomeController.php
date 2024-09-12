@@ -62,4 +62,8 @@ class HomeController extends Controller
         return view('leaflet.geojson');
     }
 
+    public function getCoordinate() {
+        return view('leaflet.get_coordinate');
+    }
+
 }
