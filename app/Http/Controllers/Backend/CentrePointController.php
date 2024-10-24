@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Centre_Point;
 use Illuminate\Http\Request;
 
 class CentrePointController extends Controller
@@ -12,7 +13,7 @@ class CentrePointController extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.CentrePoint.index');
     }
 
     /**
@@ -20,7 +21,7 @@ class CentrePointController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.CentrePoint.create');
     }
 
     /**
@@ -28,7 +29,19 @@ class CentrePointController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'coordinate' => 'required'
+        ]);
+
+        $centerPoint = new Centre_Point;
+        $centerPoint->coordinates = $request->input('coordinate');
+        $centerPoint->save();
+
+        if($centerPoint) {
+            return to_route('centre-point.index')->with('success', 'Data Berhasil Disimpan');
+        } else {
+            return to_route('centre-point.index')->with('error', 'Data Gagal Disimpan');
+        }
     }
 
     /**
