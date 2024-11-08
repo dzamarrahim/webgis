@@ -36,6 +36,11 @@
                             <tbody>
                             </tbody>
                         </table>
+                        <form action="" method="post" id="deleteForm">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" value="Hapus" style="display:none">
+                        </form>
                     </div>
                 </div>
             </div>
@@ -46,6 +51,7 @@
 @push('javascript')
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         let table = new DataTable('#dataCenterPoint', {
             processing: true,
@@ -65,4 +71,33 @@
             }]
         });
     </script>
+    <script>
+    $(function() {
+                $(document).on('click', '#delete', function(e) {
+                    e.preventDefault();
+                    var link = $(this).attr("href");
+
+                    Swal.fire({
+                        title: "Apakah Kamu Yakin Ingin Menghapus Data Tersebut?",
+                        text: "Kamu Tidak Bisa Mengembalikan Data Tersebut Jika Dihapus!",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "Ya, Hapus!"
+                        }).then((result) => {
+                        if (result.isConfirmed) {
+                            // Menggunakan variabel 'link' daripada 'href'
+                            document.getElementById('deleteForm').action = link;
+                            document.getElementById('deleteForm').submit();
+                            Swal.fire({
+                            title: "Data Sudah Terhapus!",
+                            text: "Data Kamu Sudah Berhasil Dihapus!",
+                            icon: "success"
+                            });
+                        }
+                        });
+                })
+            })
+</script>
 @endpush

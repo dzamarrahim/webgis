@@ -26,18 +26,31 @@
                 <div class="card">
                     <div class="card-header">Titik Koordinat</div>
                     <div class="card-body">
-                        <div class="form-group">
-                            <label for="">Koordinat</label>
-                            <input type="text" class="form-control" name="coordinate" id="coordinate">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Latitude</label>
-                            <input type="text" class="form-control" name="latitude" id="latitude">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Longitude</label>
-                            <input type="text" class="form-control" name="longitude" id="longitude">
-                        </div>
+                        <form action="{{ route('centre-point.update', $centrePoint->id) }}" method="post">
+                            @csrf
+                            @method('PUT')
+                            <div class="form-group">
+                                <label for="">Koordinat</label>
+                                <input type="text" value="{{ $centrePoint->coordinates }}"
+                                class="form-control @error('coordinate') is-invalid
+                                @enderror" name="coordinate" id="coordinate">
+                                @error('coordinate')
+                                    <div class="invalid-feedback">{{ @message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="">Latitude</label>
+                                <input type="text" class="form-control" name="latitude" id="latitude" value="{{ $centrePoint->coordinates }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Longitude</label>
+                                <input type="text" class="form-control" name="longitude" id="longitude" value="{{ $centrePoint->coordinates }}">
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-sm my-2">Update</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -72,7 +85,7 @@
             layers:[osm]
         })
 
-        var marker = L.marker([-4.038872728698584, 126.13021368020961], {draggable:true}).addTo(map);
+        var marker = L.marker([{{ $centrePoint->coordinates }}], {draggable:true}).addTo(map);
 
         var baseMaps = {
             'Open Street Map': osm,

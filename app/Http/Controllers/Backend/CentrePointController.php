@@ -33,11 +33,11 @@ class CentrePointController extends Controller
             'coordinate' => 'required'
         ]);
 
-        $centerPoint = new Centre_Point;
-        $centerPoint->coordinates = $request->input('coordinate');
-        $centerPoint->save();
+        $centrePoint = new Centre_Point;
+        $centrePoint->coordinates = $request->input('coordinate');
+        $centrePoint->save();
 
-        if($centerPoint) {
+        if($centrePoint) {
             return to_route('centre-point.index')->with('success', 'Data Berhasil Disimpan');
         } else {
             return to_route('centre-point.index')->with('error', 'Data Gagal Disimpan');
@@ -55,24 +55,35 @@ class CentrePointController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Centre_Point $centrePoint)
     {
-        //
+        $centrePoint = Centre_Point::findOrFail($centrePoint->id);
+        return view('backend.CentrePoint.edit', ['centrePoint' => $centrePoint]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Centre_Point $centrePoint)
     {
-        //
+        $centrePoint = Centre_Point::findOrFail($centrePoint->id);
+        $centrePoint->coordinates = $request->input('coordinate');
+        $centrePoint->update();
+
+        if($centrePoint) {
+            return to_route('centre-point.index')->with('success', 'Data Berhasil Diupdate');
+        } else {
+            return to_route('centre-point.index')->with('error', 'Data Gagal Diupdate');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $centrePoint = Centre_Point::findOrFail($id);
+        $centrePoint->delete();
+        return redirect()->back();
     }
 }
