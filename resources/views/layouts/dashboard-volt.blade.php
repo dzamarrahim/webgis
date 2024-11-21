@@ -731,6 +731,13 @@
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 
+    <script>
+        window.setTimeout(function() {
+            $(".alert").fadeTo(500,0).slideUp(500,function(){
+                $(this).remove()
+            })
+        }, 3000);
+    </script>
     @stack('javascript')
     <!-- Volt JS -->
     {{-- <script src="{{ asset('volt/hmtl&css/assets/js/volt.js') }}"></script> --}}
