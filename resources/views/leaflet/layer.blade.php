@@ -47,10 +47,24 @@
             attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
         });
 
+        var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+        });
+
+        var googleStreets = L.tileLayer('http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}',{
+            maxZoom: 20,
+            subdomains:['mt0','mt1','mt2','mt3']
+        });
+
+        var googleHybrid = L.tileLayer('http://{s}.google.com/vt?lyrs=s,h&x={x}&y={y}&z={z}',{
+            maxZoom: 20,
+            subdomains:['mt0','mt1','mt2','mt3']
+        });
+
         var map = L.map('map', {
             center:[-4.038872728698584, 126.13021368020961],
             zoom:4,
-            layers:[osm]
+            layers:[googleStreets]
         })
 
         var iconMarker = L.icon({
@@ -75,9 +89,12 @@
         var polygon = L.polygon(latlngpolygon).bindPopup('Data Polygon').addTo(map)
 
         var baseMaps = {
+            'Google Street': googleStreets,
+            'Google Satellit': googleHybrid,
             'Open Street Map': osm,
             'Esri World': Esri_WorldStreetMap,
-            'Open Topo Map': OpenTopoMap
+            'Open Topo Map': OpenTopoMap,
+            'World Imagery': Esri_WorldImagery
         }
 
         var overlayers = {
