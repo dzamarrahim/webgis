@@ -120,5 +120,14 @@
         }
 
         const layerControl = L.control.layers(baseLayers).addTo(map)
+
+        L.control.scale().addTo(map);
+
+        setInterval(function(){
+            map.setView();
+            setTimeout(function(){
+                map.setView();
+            }, 2000);
+        }, 4000);
     </script>
 @endpush

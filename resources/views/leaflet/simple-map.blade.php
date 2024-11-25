@@ -39,5 +39,14 @@
             maxZoom: 19,
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
+
+        L.control.scale().addTo(map);
+
+        setInterval(function(){
+            map.setView();
+            setTimeout(function(){
+                map.setView();
+            }, 2000);
+        }, 4000);
     </script>
 @endpush
