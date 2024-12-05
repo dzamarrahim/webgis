@@ -24,6 +24,7 @@
 @endsection
 
 @push('javascript')
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
@@ -61,10 +62,11 @@
             subdomains:['mt0','mt1','mt2','mt3']
         });
 
+        var kecamatan = L.layerGroup();
         var map = L.map('map', {
             center: [{{ $centrePoint->coordinates }}],
             zoom: 10,
-            layers: [googleStreets],
+            layers: [googleStreets, kecamatan],
             fullscreenControl: {
                 pseudoFullscreen: false
             }
@@ -119,7 +121,11 @@
             @endforeach
         }
 
-        const layerControl = L.control.layers(baseLayers).addTo(map)
+        var overLayers = {
+            "Kecamatan": kecamatan 
+        };
+
+        const layerControl = L.control.layers(baseLayers, overLayers).addTo(map)
 
         L.control.scale().addTo(map);
 
@@ -129,5 +135,21 @@
                 map.setView();
             }, 2000);
         }, 4000);
+
+        // GeoJSON
+        let geoLayer;
+
+@foreach ($kecamatan as $key => $value)
+    // Ambil file GeoJSON secara dinamis
+    $.getJSON("<?= asset('storage/geojson/' . $value['geojson']) ?>", function(data) {
+        // Hapus layer lama jika ada
+        if (geoLayer) {
+            map.removeLayer(geoLayer);
+        }
+        // Tambahkan layer baru ke peta
+        geoLayer = L.geoJson(data).addTo(map);
+    });
+@endforeach
+
     </script>
 @endpush

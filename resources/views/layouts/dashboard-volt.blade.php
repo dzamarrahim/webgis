@@ -306,6 +306,12 @@
                             <span class="sidebar-text">Spot</span>
                           </a>
                         </li>
+
+                        <li class="nav-item ">
+                          <a class="nav-link" href="{{ route('kecamatan.index') }}">
+                            <span class="sidebar-text">Kecamatan</span>
+                          </a>
+                        </li>
                         
                       </ul>
                     </div>

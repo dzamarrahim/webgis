@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Spot;
+use App\Models\Kecamatan;
 use App\Models\Centre_Point;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -72,10 +73,12 @@ class HomeController extends Controller
     public function spots() {
         $centrePoint = Centre_Point::get()->first();
         $spot = Spot::get();
+        $kecamatan = Kecamatan::get();
 
         return view('frontend.home', [
             'centrePoint' => $centrePoint,
-            'spot' => $spot
+            'spot' => $spot,
+            'kecamatan' => $kecamatan
         ]);
     }
 

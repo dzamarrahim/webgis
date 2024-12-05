@@ -48,5 +48,10 @@
                 map.setView();
             }, 2000);
         }, 4000);
+
+        // GeoJSON
+        $.getJSON("<?= url('AcehTamiang/id1114010_tamiang_hulu.geojson') ?>", function(data) {
+            geoLayer = L.geoJson(data).addTo(map);
+        });
     </script>
 @endpush

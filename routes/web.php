@@ -23,6 +23,7 @@ Route::get('/detail-spot/{slug}',[\App\Http\Controllers\HomeController::class,'d
 Auth::routes();
 
 Route::middleware(['auth'])->group(function() {
+    // Example
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/simple-map', [App\Http\Controllers\HomeController::class, 'simple_map'])->name('simple-map');
     Route::get('/markers', [App\Http\Controllers\HomeController::class, 'marker'])->name('markers');
@@ -38,7 +39,10 @@ Route::middleware(['auth'])->group(function() {
     // Route Datatable
     Route::get('/centre-point/data', [\App\Http\Controllers\Backend\DataController::class, 'centrepoint'])->name('centre-point.data');
     Route::get('/spot/data', [\App\Http\Controllers\Backend\DataController::class, 'spot'])->name('spot.data');
+    Route::get('/kecamatan/data', [\App\Http\Controllers\Backend\DataController::class, 'kecamatan'])->name('kecamatan.data');
 
+    // Backend
     Route::resource('/centre-point', (\App\Http\Controllers\Backend\CentrePointController::class));
     Route::resource('/spot', (\App\Http\Controllers\Backend\SpotController::class));
+    Route::resource('/kecamatan', (\App\Http\Controllers\Backend\KecamatanController::class));
 });
