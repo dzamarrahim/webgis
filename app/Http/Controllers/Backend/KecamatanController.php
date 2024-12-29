@@ -38,7 +38,8 @@ class KecamatanController extends Controller
             'jumlah_penduduk' => 'required',
             'jumlah_desa' => 'required',
             'luas' => 'required',
-            'geojson' => 'file|mimetypes:application/json,text/plain|max:2048'
+            'geojson' => 'file|mimetypes:application/json,text/plain|max:2048',
+            'warna' => ['required', 'regex:/^#[0-9a-fA-F]{6}$/']
         ]);
 
         $kecamatan = new Kecamatan;
@@ -53,6 +54,7 @@ class KecamatanController extends Controller
         $kecamatan->jumlah_desa = $request->input('jumlah_desa');
         $kecamatan->luas = $request->input('luas');
         $kecamatan->geojson = $file->getClientOriginalName();
+        $kecamatan->warna = $request->input('warna');
         $kecamatan->save();
 
         if($kecamatan) {
@@ -92,7 +94,8 @@ class KecamatanController extends Controller
             'jumlah_penduduk' => 'required',
             'jumlah_desa' => 'required',
             'luas' => 'required',
-            'geojson' => 'file|mimetypes:application/json,text/plain|max:2048'
+            'geojson' => 'file|mimetypes:application/json,text/plain|max:2048',
+            'warna' => ['required', 'regex:/^#[0-9a-fA-F]{6}$/']
         ]);
 
         // Hapus File Image Pada Folder public/storage/ImageSpots
@@ -109,7 +112,8 @@ class KecamatanController extends Controller
             // Proses hapus & upload file image ke folder public/upload/spots
             Storage::disk('local')->delete('public/geojson/' . ($kecamatan->geojson));
             $file = $request->file('geojson');
-            $file->storeAs('public/geojson', '.geojson');
+            $originalName = $file->getClientOriginalName();
+            $file->storeAs('public/geojson', $originalName);
         }
 
         $kecamatan->name = $request->input('name');
@@ -117,6 +121,7 @@ class KecamatanController extends Controller
         $kecamatan->jumlah_desa = $request->input('jumlah_desa');
         $kecamatan->luas = $request->input('luas');
         $kecamatan->geojson = $file->getClientOriginalName();
+        $kecamatan->warna = $request->input('warna');
         $kecamatan->update();
 
         if($kecamatan) {

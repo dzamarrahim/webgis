@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-    <div class="container my-4">
+    <div class="container my-4" style="padding-top: 5rem;">
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
@@ -142,12 +142,20 @@
 @foreach ($kecamatan as $key => $value)
     // Ambil file GeoJSON secara dinamis
     $.getJSON("<?= asset('storage/geojson/' . $value['geojson']) ?>", function(data) {
-        // Hapus layer lama jika ada
-        if (geoLayer) {
-            map.removeLayer(geoLayer);
-        }
-        // Tambahkan layer baru ke peta
-        geoLayer = L.geoJson(data).addTo(map);
+        geoLayer = L.geoJson(data, {
+            style: function(feature) {
+                return {
+                    opacity: 1.0,
+                    color: "black",
+                    fillOpacity: 1.0,
+                    fillColor: "red",
+                }
+            },
+        }).addTo(kecamatan);
+
+        geoLayer.eachLayer(function(layer) {
+            layer.bindPopup("{{ $value->name }}");
+        });
     });
 @endforeach
 

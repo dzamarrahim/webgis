@@ -73,6 +73,15 @@
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
+                            <div class="form-group my-3">
+                                <label for="">Pilih Warna</label>
+                                <input type="color" class="form-control @error('warna')
+                                    is-invalid
+                                @enderror" name="warna">
+                                @error('geojson')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
 
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary btn-sm my-2">Simpan</button>
