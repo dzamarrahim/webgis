@@ -75,7 +75,7 @@
 @extends('layouts.app-volt')
 
 @section('content')
-    <div class="container">
+    <div class="container" style="transform: scale(0.9);">
         <p class="text-center">
             <a href="{{ url('/') }}" class="d-flex align-items-center justify-content-center">
                 <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">

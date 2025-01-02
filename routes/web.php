@@ -17,7 +17,8 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::get('/', [\App\Http\Controllers\HomeController::class, 'spots']);
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'page'])->name('page');
+Route::get('/webgis', [\App\Http\Controllers\HomeController::class, 'spots'])->name('webgis');
 Route::get('/detail-spot/{slug}',[\App\Http\Controllers\HomeController::class,'detailSpot'])->name('detail-spot');
 
 Auth::routes();

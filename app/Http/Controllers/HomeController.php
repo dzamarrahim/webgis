@@ -70,12 +70,16 @@ class HomeController extends Controller
         return view('leaflet.get_coordinate');
     }
 
+    public function page() {
+        return view('frontend.home');
+    }
+
     public function spots() {
         $centrePoint = Centre_Point::get()->first();
         $spot = Spot::get();
         $kecamatan = Kecamatan::get();
 
-        return view('frontend.home', [
+        return view('frontend.webgis', [
             'centrePoint' => $centrePoint,
             'spot' => $spot,
             'kecamatan' => $kecamatan

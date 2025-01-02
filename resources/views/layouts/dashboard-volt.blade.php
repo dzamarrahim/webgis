@@ -56,6 +56,7 @@
     <!-- Volt CSS -->
     <link type="text/css" href="{{ asset('volt/html&css/css/volt.css') }}" rel="stylesheet">
 
+    <link rel="shortcut icon" href="{{ asset('icon/pupr.jpg') }}" type="image/x-icon" />
     <!-- NOTICE: You can use the _analytics.html partial to include production code specific code & trackers -->
     @yield('css')
 </head>
