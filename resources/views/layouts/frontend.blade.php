@@ -47,7 +47,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto me-3">
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{ route('page') }}">Home</a>
                   </li>
@@ -61,6 +61,7 @@
                     <a class="nav-link" href="#contact">Contact</a>
                   </li>
                 </ul>
+                <button type="button" class="btn btn-dark rounded-0 fw-semibold text-uppercase" href="{{ route('login')}}">Login</button>
               </div>
         </div>
     </nav>
@@ -93,7 +94,7 @@
         </div>
         <div class="row">
           <div class="col">
-            <p class="text-white-50">&copy; Copyright 2025 By Dinas PUPR Aceh Tamiang, All Right Reserved.</p>
+            <p class="text-white-50 pt-5">&copy; Copyright 2025 By Dinas PUPR Aceh Tamiang, All Right Reserved.</p>
           </div>
         </div>
       </div>
