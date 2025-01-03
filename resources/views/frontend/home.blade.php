@@ -43,15 +43,36 @@
             height: 310px;
         }
 
+        .webgis {
+            margin-bottom: 50px;
+        }
+
         .about .row .col:nth-child(1) {
             background-color: #222;
+        }
+
+        .faq {
+            margin-top: 70px;
+            margin-bottom: 100px;
+        }
+
+        .faq .accordion {
+            --bs-accordion-bg: #198754;
+        }
+
+        .faq .accordion-button:not(.collapsed) {
+            background-color: #212529;
+        }
+
+        .faq .accordion .accordion-button:focus {
+            box-shadow: none;
         }
     </style>
 @endsection
 
 @section('content')
     <!-- Hero Section -->
-    <div class="hero d-flex align-items-center" style="padding-top: 5rem;">
+    <div class="hero d-flex align-items-center" style="padding-top: 5rem;" id="home">
         <div class="container">
             <div class="row">
                 <div class="col text-center">
@@ -64,15 +85,15 @@
     <!-- End Hero Section -->
 
     <!-- About Section -->
-     <div class="about">
+     <div class="about" id="about">
         <div class="container-fluid">
             <div class="row row-cols-lg-2 row-cols-lg-1">
-                <div class="col text-center py-5 text-white">
+                <div class="col text-center py-5 text-white px-4">
                 <i class="fa-solid fa-circle-info" style="font-size: 70px; padding-bottom: 20px;"></i>
                     <h2>Informasi Geospasial</h2>
                     <p class="">Informasi geospasial dapat didefinisikan sebagai segala yang menyangkut lokasi dan keberadaan suatu objek pada permukaan bumi.</p>
                 </div>
-                <div class="col text-center py-5 text-white bg-success">
+                <div class="col text-center py-5 text-white bg-success px-3">
                 <i class="fa-solid fa-map-location-dot" style="font-size: 70px; padding-bottom: 20px;"></i>
                     <h2>Data Geospasial</h2>
                     <p>Data tentang lokasi geografis, dimensi atau ukuran, dan/atau karakteristik objek alam yang berada di bawah, pada, atau di atas permukaan bumi.</p>
@@ -83,7 +104,7 @@
      <!-- End About Section -->
 
      <!-- Latar Belakang -->
-      <div class="latar">
+      <div class="latar" id="latar">
         <div class="container my-5">
             <div class="row">
                 <div class="col">
@@ -99,7 +120,7 @@
      <!-- Akhir Latar Belakang -->
 
      <!-- Apa Itu GIS -->
-      <div class="gis">
+      <div class="gis" id="gis">
         <div class="container my-5">
             <div class="row">
                 <div class="col">
@@ -117,7 +138,7 @@
      <!-- Akhir Apa Itu GIS -->
 
      <!-- WebGIS -->
-      <div class="webgis bg-dark">
+      <div class="webgis bg-dark" id="webgis">
         <div class="container py-5">
             <div class="row py-5">
                 <div class="col">
@@ -125,11 +146,88 @@
                 </div>
                 <div class="col ms-4">
                     <h3 class="text-white mb-4">WebGIS Kabupaten Aceh Tamiang</h3>
-                    <p class="text-white mb-4">WebGIS adalah pemetaan digital yang memanfaatkan jaringan internet sebagai media komunikasi yang berfungsi mendistribusikan, mempublikasikan, mengintegrasikan, mengkomunikasikan dan menyediakan informasi dalam bentuk teks, peta dijital serta menjalankan fungsi–fungsi analisis dan query yang terkait dengan GIS. Untuk mengakses WebGIS Kota Banda Aceh silahkan klik link berikut</p>
-                    <button class="btn btn-success btn-lg px-4 py-2 rounded-1">WebGIS Aceh Tamiang</button>
+                    <p class="text-white mb-4">WebGIS adalah pemetaan digital yang memanfaatkan jaringan internet sebagai media komunikasi yang berfungsi mendistribusikan, mempublikasikan, mengintegrasikan, mengkomunikasikan dan menyediakan informasi dalam bentuk teks, peta dijital serta menjalankan fungsi–fungsi analisis dan query yang terkait dengan GIS. Untuk mengakses WebGIS Kabupaten Aceh Tamiang silahkan klik link berikut</p>
+                    <a href="{{ route('webgis') }}" class="btn btn-success btn-lg px-4 py-2 rounded-1" target="_blank">WebGIS Aceh Tamiang</a>
                 </div>
             </div>
         </div>
       </div>
      <!-- Akhir WebGIS -->
+
+     <!-- FAQ -->
+      <div class="faq" id="faq">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h2 class="fw-semibold">Pertanyaan Umum <br> Yang Sering ditanyakan</h2>
+                </div>
+            </div>
+            <div class="row row-cols-lg-2 row-cols-1 g-4 pt-4">
+                <div class="col">
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                            <button class="accordion-button collapsed text-white fw-semibold lh-lg" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            Apa Itu GIS?
+                            </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                <div class="accordion-body text-white">
+                                GIS adalah suatu komponen yang terdiri dari perangkat keras, perangkat lunak, data geografis dan sumber daya manusia yang bekerja bersama secara efektif untuk memasukan, menyimpan, memperbaiki, memperbaharui, mengelola, memanipulasi, mengintegrasikan, menganalisa dan menampilkan data dalam suatu informasi berbasis geografis
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                            <button class="accordion-button collapsed text-white fw-semibold lh-lg" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Apa Itu WebGIS?
+                            </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                <div class="accordion-body text-white">
+                                WebGIS adalah pemetaan digital yang memanfaatkan jaringan internet sebagai media komunikasi yang berfungsi mendistribusikan, mempublikasikan, mengintegrasikan, mengkomunikasikan dan menyediakan informasi dalam bentuk teks, peta dijital serta menjalankan fungsi–fungsi analisis dan query yang terkait dengan GIS. Untuk mengakses WebGIS Kabupaten Aceh Tamiang silahkan klik link berikut
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                            <button class="accordion-button collapsed text-white fw-semibold lh-lg" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Apakah Saat Mengakses WebGIS Harus Login Terlebih Dahulu?
+                            </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                <div class="accordion-body text-white">
+                                Iya, Kamu Harus Login Atau Membuat Akun Terlebih Dahulu Sebelum Mengakses WebGIS
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                            <button class="accordion-button collapsed text-white fw-semibold lh-lg" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFourth" aria-expanded="false" aria-controls="collapseFourth">
+                            Apa Itu Geospasial?
+                            </button>
+                            </h2>
+                            <div id="collapseFourth" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                <div class="accordion-body text-white">
+                                Geospasial adalah data yang berkaitan dengan lokasi dan karakteristik suatu objek atau kejadian di permukaan bumi. Data geospasial juga disebut sebagai geodata.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
 @endsection

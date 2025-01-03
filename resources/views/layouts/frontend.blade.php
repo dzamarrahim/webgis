@@ -48,11 +48,21 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto me-3">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ route('page') }}">Home</a>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Home
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#home">Home</a></li>
+                      <li><a class="dropdown-item" href="#about">About</a></li>
+                      <li><a class="dropdown-item" href="#latar">Latar Belakang</a></li>
+                      <li><a class="dropdown-item" href="#gis">Apa Itu GIS</a></li>
+                      <li><a class="dropdown-item" href="#webgis">WebGIS Aceh Tamiang</a></li>
+                      <li><a class="dropdown-item" href="#faq">FAQ</a></li>
+                    </ul>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="{{ route('webgis') }}">WebGIS</a>
+                    <a class="nav-link" href="{{ route('webgis') }}" target="_blank">WebGIS</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">Projects</a>
@@ -61,7 +71,7 @@
                     <a class="nav-link" href="#contact">Contact</a>
                   </li>
                 </ul>
-                <button type="button" class="btn btn-dark rounded-0 fw-semibold text-uppercase" href="{{ route('login')}}">Login</button>
+                <a href="{{ route('login')}}" class="btn btn-dark rounded-0 fw-semibold text-uppercase">Login</a>
               </div>
         </div>
     </nav>
