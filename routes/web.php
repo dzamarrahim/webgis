@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'page'])->name('page');
 Route::get('/webgis', [\App\Http\Controllers\HomeController::class, 'spots'])->name('webgis');
+Route::get('/contact', [\App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
 Route::get('/detail-spot/{slug}',[\App\Http\Controllers\HomeController::class,'detailSpot'])->name('detail-spot');
 
 Auth::routes();
