@@ -67,8 +67,21 @@
                   <li class="nav-item">
                     <a class="nav-link" href="{{ route('contact') }}">Contact</a>
                   </li>
+                  @auth
+                  <li class="nav-item dropdown">
+                    <p class="text-white mt-2 ms-3" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-user me-2" style="color: white"></i>{{ auth()->user()->name }}</p>
+                  <ul class="dropdown-menu">
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      @csrf
+                  </form>
+
+                    <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa-solid fa-arrow-right-from-bracket me-3" style="color: red"></i>Logout</a></li>
+                  </ul>
+                  </li>
+                  @else
+                  <a href="{{ route('login')}}" class="btn btn-dark rounded-0 fw-semibold text-uppercase">Login</a>
+                  @endauth
                 </ul>
-                <a href="{{ route('login')}}" class="btn btn-dark rounded-0 fw-semibold text-uppercase">Login</a>
               </div>
         </div>
     </nav>

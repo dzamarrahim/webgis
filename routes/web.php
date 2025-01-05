@@ -19,14 +19,14 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', [\App\Http\Controllers\HomeController::class, 'page'])->name('page');
-Route::get('/webgis', [\App\Http\Controllers\HomeController::class, 'spots'])->name('webgis');
-Route::get('/contact', [\App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
-Route::get('/detail-spot/{slug}',[\App\Http\Controllers\HomeController::class,'detailSpot'])->name('detail-spot');
+Route::get('/', [\App\Http\Controllers\FrontendController::class, 'page'])->name('page');
+Route::get('/webgis', [\App\Http\Controllers\FrontendController::class, 'spots'])->name('webgis')->middleware('auth');
+Route::get('/contact', [\App\Http\Controllers\FrontendController::class, 'contact'])->name('contact');
+Route::get('/detail-spot/{slug}',[\App\Http\Controllers\FrontendController::class,'detailSpot'])->name('detail-spot');
 
 Auth::routes();
 
-Route::middleware(['auth'])->group(function() {
+Route::middleware(['admin'])->group(function() {
     // Example
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/simple-map', [App\Http\Controllers\HomeController::class, 'simple_map'])->name('simple-map');
@@ -44,9 +44,11 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/centre-point/data', [\App\Http\Controllers\Backend\DataController::class, 'centrepoint'])->name('centre-point.data');
     Route::get('/spot/data', [\App\Http\Controllers\Backend\DataController::class, 'spot'])->name('spot.data');
     Route::get('/kecamatan/data', [\App\Http\Controllers\Backend\DataController::class, 'kecamatan'])->name('kecamatan.data');
+    Route::get('/user/data', [\App\Http\Controllers\Backend\DataController::class, 'user'])->name('user.data');
 
     // Backend
     Route::resource('/centre-point', (\App\Http\Controllers\Backend\CentrePointController::class));
     Route::resource('/spot', (\App\Http\Controllers\Backend\SpotController::class));
     Route::resource('/kecamatan', (\App\Http\Controllers\Backend\KecamatanController::class));
+    Route::resource('/users', (\App\Http\Controllers\Backend\UsersController::class));
 });

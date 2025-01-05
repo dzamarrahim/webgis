@@ -27,7 +27,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user = auth()->user();
+        return view('home', compact('user'));
     }
 
     public function simple_map() {
@@ -68,32 +69,6 @@ class HomeController extends Controller
 
     public function getCoordinate() {
         return view('leaflet.get_coordinate');
-    }
-    
-    public function page() {
-        return view('frontend.home');
-    }
-
-    public function contact() {
-        return view('frontend.contact');
-    }
-    
-    public function spots() {
-        $centrePoint = Centre_Point::get()->first();
-        $spot = Spot::get();
-        $kecamatan = Kecamatan::get();
-
-        return view('frontend.webgis', [
-            'centrePoint' => $centrePoint,
-            'spot' => $spot,
-            'kecamatan' => $kecamatan
-        ]);
-    }
-
-    public function detailSpot($slug)
-    {
-        $spot = Spot::where('slug',$slug)->first();
-        return view('frontend.detail',['spot' => $spot]);
     }
 
 }
