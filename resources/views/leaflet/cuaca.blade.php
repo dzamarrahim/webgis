@@ -19,6 +19,13 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
+            <form method="GET" action="/cuaca">
+                <label for="lat">Latitude:</label>
+                <input type="text" id="lat" name="lat" required>
+                <label for="lon">Longitude:</label>
+                <input type="text" id="lon" name="lon" required>
+                <button type="submit">Get Weather</button>
+            </form>
             <div class="card">
                 <div class="card-header">Circle</div>
                 <div class="card-body">
@@ -44,7 +51,7 @@
 
         // Tambahkan Marker
         L.marker([{{ $weatherData['coord']['lat'] }}, {{ $weatherData['coord']['lon'] }}]).addTo(map)
-            .bindPopup("<b>Aceh Tamiang</b><br>Temperature: {{ $weatherData['main']['temp'] }}°C<br>Weather: {{ $weatherData['weather'][0]['description'] }}")
+            .bindPopup("<b>Aceh Tamiang</b><br>Suhu: {{ $weatherData['main']['temp'] }}°C<br>Cuaca Saat Ini: {{ $weatherData['weather'][0]['description'] }}")
             .openPopup();
     </script>
 @endpush

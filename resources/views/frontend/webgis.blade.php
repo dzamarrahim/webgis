@@ -6,18 +6,22 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-search@3.0.9/dist/leaflet-search.src.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@2.4.0/Control.FullScreen.min.css">
+    <style>
+        #map {
+            width: 100%;
+        }
+    </style>
 @endsection
 
 @section('content')
-    <div class="container my-4" style="padding-top: 5rem;">
+    <div class="container-fluid my-4" style="padding-top: 3rem;">
+        <h1>Kabupaten: Aceh Tamiang</h1>
+        <p>Temperature: {{ $weatherData['main']['temp'] }}°C</p>
+        <p>Weather: {{ $weatherData['weather'][0]['description'] }}</p>
+        <img src="https://openweathermap.org/img/wn/{{ $weatherData['weather'][0]['icon'] }}@2x.png" alt="Weather Icon">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <div class="card border border-success border-3">
-                    <div class="card-header fw-bold text-success bg-body">Aceh Tamiang</div>
-                    <div class="card-body">
                         <div id="map" style="height: 500px"></div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
