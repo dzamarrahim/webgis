@@ -17,7 +17,8 @@ class SpotController extends Controller
      */
     public function index()
     {
-        return view('backend.Spot.index');
+        $user = auth()->user();
+        return view('backend.Spot.index', compact('user'));
     }
 
     /**
@@ -25,8 +26,9 @@ class SpotController extends Controller
      */
     public function create()
     {
+        $user = auth()->user();
         $centrePoint = Centre_Point::get()->first();
-        return view('backend.Spot.create', ['centrePoint' => $centrePoint]);
+        return view('backend.Spot.create', ['centrePoint' => $centrePoint], compact('user'));
     }
 
     /**

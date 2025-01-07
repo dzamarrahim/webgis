@@ -6,6 +6,7 @@ use App\Models\Spot;
 use App\Models\Kecamatan;
 use App\Models\Centre_Point;
 use Illuminate\Http\Request;
+use Spatie\FlareClient\Http\Client;
 use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
@@ -32,43 +33,82 @@ class HomeController extends Controller
     }
 
     public function simple_map() {
-        return view('leaflet.simple-map');
+        $user = auth()->user();
+        return view('leaflet.simple-map', compact('user'));
     }
 
     public function marker() {
-        return view('leaflet.marker');
+        $user = auth()->user();
+        return view('leaflet.marker', compact('user'));
     }
 
     public function circle() {
-        return view('leaflet.circle');
+        $user = auth()->user();
+        return view('leaflet.circle', compact('user'));
     }
 
     public function polygon() {
-        return view('leaflet.polygon');
+        $user = auth()->user();
+        return view('leaflet.polygon', compact('user'));
     }
     
     public function polyline() {
-        return view('leaflet.polyline');
+        $user = auth()->user();
+        return view('leaflet.polyline', compact('user'));
     }
     
     public function rectangle() {
-        return view('leaflet.rectangle');
+        $user = auth()->user();
+        return view('leaflet.rectangle', compact('user'));
     }
 
     public function layers() {
-        return view('leaflet.layer');
+        $user = auth()->user();
+        return view('leaflet.layer', compact('user'));
     }
 
     public function layer_group() {
-        return view('leaflet.layer_group');
+        $user = auth()->user();
+        return view('leaflet.layer_group', compact('user'));
     }
 
     public function geojson() {
-        return view('leaflet.geojson');
+        $user = auth()->user();
+        return view('leaflet.geojson', compact('user'));
     }
 
     public function getCoordinate() {
-        return view('leaflet.get_coordinate');
+        $user = auth()->user();
+        return view('leaflet.get_coordinate', compact('user'));
     }
+
+    public function getWeatherByRegion(Request $request)
+{
+    $user = auth()->user();
+    $lat = $request->input('lat', 4.283533070708643); // Default ke 0 jika tidak ada
+    $lon = $request->input('lon', 98.05858611362056); // Default ke 0 jika tidak ada
+    $apiKey = env('OPENWEATHER_API_KEY');
+
+    try {
+        $client = new \GuzzleHttp\Client();
+        $response = $client->get("https://api.openweathermap.org/data/2.5/weather", [
+            'query' => [
+                'lat' => $lat,
+                'lon' => $lon,
+                'appid' => $apiKey,
+                'units' => 'metric', // Celsius
+            ],
+        ]);
+
+        $weatherData = json_decode($response->getBody(), true);
+
+        // Kirim data ke view
+        return view('leaflet.cuaca', compact('weatherData', 'user'));
+    } catch (\Exception $e) {
+        return response()->json(['error' => $e->getMessage()], 500);
+    }
+}
+
+
 
 }

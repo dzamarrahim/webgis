@@ -13,7 +13,8 @@ class CentrePointController extends Controller
      */
     public function index()
     {
-        return view('backend.CentrePoint.index');
+        $user = auth()->user();
+        return view('backend.CentrePoint.index', compact('user'));
     }
 
     /**
@@ -21,7 +22,8 @@ class CentrePointController extends Controller
      */
     public function create()
     {
-        return view('backend.CentrePoint.create');
+        $user = auth()->user();
+        return view('backend.CentrePoint.create', compact('user'));
     }
 
     /**
@@ -57,8 +59,9 @@ class CentrePointController extends Controller
      */
     public function edit(Centre_Point $centrePoint)
     {
+        $user = auth()->user();
         $centrePoint = Centre_Point::findOrFail($centrePoint->id);
-        return view('backend.CentrePoint.edit', ['centrePoint' => $centrePoint]);
+        return view('backend.CentrePoint.edit', ['centrePoint' => $centrePoint], compact('user'));
     }
 
     /**

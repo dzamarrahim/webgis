@@ -13,7 +13,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('backend.Users.index');
+        $user = auth()->user();
+        return view('backend.Users.index', compact('user'));
     }
 
     /**
@@ -21,7 +22,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('backend.Users.create');
+        // return view('backend.Users.create');
     }
 
     /**
@@ -29,23 +30,23 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required'
-        ]);
+        // $this->validate($request, [
+        //     'name' => 'required',
+        //     'email' => 'required',
+        //     'password' => 'required'
+        // ]);
 
-        $user = new User;
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->password = Hash::make($request->input('password'));;
-        $user->save();
+        // $user = new User;
+        // $user->name = $request->input('name');
+        // $user->email = $request->input('email');
+        // $user->password = Hash::make($request->input('password'));;
+        // $user->save();
 
-        if($user) {
-            return to_route('users.index')->with('success', 'Data Berhasil Disimpan');
-        } else {
-            return to_route('users.index')->with('error', 'Data Gagal Disimpan');
-        }
+        // if($user) {
+        //     return to_route('users.index')->with('success', 'Data Berhasil Disimpan');
+        // } else {
+        //     return to_route('users.index')->with('error', 'Data Gagal Disimpan');
+        // }
     }
 
     /**
@@ -77,8 +78,8 @@ class UsersController extends Controller
      */
     public function destroy(string $id)
     {
-        $user = User::findOrFail($id);
-        $user->delete();
-        return redirect()->back();
+        // $user = User::findOrFail($id);
+        // $user->delete();
+        // return redirect()->back();
     }
 }

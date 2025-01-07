@@ -16,7 +16,8 @@ class KecamatanController extends Controller
      */
     public function index()
     {
-        return view('backend.Kecamatan.index');
+        $user = auth()->user();
+        return view('backend.Kecamatan.index', compact('user'));
     }
 
     /**
@@ -24,8 +25,9 @@ class KecamatanController extends Controller
      */
     public function create()
     {
+        $user = auth()->user();
         $centrePoint = Centre_Point::get()->first();
-        return view('backend.Kecamatan.create', ['centrePoint' => $centrePoint]);
+        return view('backend.Kecamatan.create', ['centrePoint' => $centrePoint], compact('user'));
     }
 
     /**
@@ -77,11 +79,12 @@ class KecamatanController extends Controller
      */
     public function edit(Kecamatan $kecamatan)
     {
+        $user = auth()->user();
         $centrePoint = Centre_Point::get()->first();
         return view('backend.Kecamatan.edit', [
             'centrePoint' => $centrePoint,
             'kecamatan' => $kecamatan
-        ]);
+        ], compact('user'));
     }
 
     /**

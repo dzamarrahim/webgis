@@ -23,11 +23,11 @@
 @endsection
 
 @section('content')
-    <div class="container my-4">
+    <div class="container my-4" style="padding-top: 6rem; padding-bottom: 3rem;">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
-                    <div class="card-header">Map Spot</div>
+                    <div class="card-header">Maps Spot</div>
                     <div class="card-body">
                         <div id="map"></div>
                     </div>
@@ -35,7 +35,7 @@
             </div>
             <div class="col-md-6">
                 <div class="card">
-                    <div class="card-header">Detail Spot : {{ $spot->name }}</div>
+                    <div class="card-header fw-semibold">{{ $spot->name }}</div>
                     <div class="card-body">
                         <p>
                         <h4><strong>Nama Spot :</strong></h4>

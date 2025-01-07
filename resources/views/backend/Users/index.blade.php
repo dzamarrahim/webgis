@@ -11,7 +11,6 @@
                 <div class="card">
                     <div class="card-header">
                         List Users
-                        <a href="{{ route('users.create') }}" class="btn btn-info btn-sm float-end">Add New Users</a>
                     </div>
                     <div class="card-body">
                         @if (session('success'))
@@ -30,6 +29,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Nama Users</th>
+                                    <th>Role</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -66,6 +66,8 @@
                 searchable: false
             }, {
                 data: 'name'
+            }, {
+                data: 'role'
             }, {
                 data: 'action'
             }]

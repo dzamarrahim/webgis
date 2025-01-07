@@ -39,6 +39,7 @@ Route::middleware(['admin'])->group(function() {
     Route::get('/layer-group', [App\Http\Controllers\HomeController::class, 'layer_group'])->name('layer-group');
     Route::get('/geojson', [App\Http\Controllers\HomeController::class, 'geojson'])->name('geojson');
     Route::get('/get-coordinate', [App\Http\Controllers\HomeController::class, 'getCoordinate'])->name('getCoordinate');
+    Route::get('/cuaca', [App\Http\Controllers\HomeController::class, 'getWeatherByRegion'])->name('getWeatherByRegion');
 
     // Route Datatable
     Route::get('/centre-point/data', [\App\Http\Controllers\Backend\DataController::class, 'centrepoint'])->name('centre-point.data');

@@ -250,6 +250,18 @@
                                     <span class="sidebar-text">Get Coordinate</span>
                                 </a>
                             </li>
+
+                            <li
+                                class="nav-item 
+                            {{ Request::is('getWeatherByRegion') ? 'active' : '' }}
+                            ">
+                                <a href="{{ route('getWeatherByRegion') }}" class="nav-link ">
+                                    <span class="sidebar-icon">
+                                        <i class="fas fa-draw-polygon"></i>
+                                    </span>
+                                    <span class="sidebar-text">Get Coordinate</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </li>
