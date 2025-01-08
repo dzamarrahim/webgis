@@ -76,6 +76,9 @@
                   </form>
 
                     <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa-solid fa-arrow-right-from-bracket me-3" style="color: red"></i>Logout</a></li>
+                    @if (Auth::check() && Auth::user()->role === 'admin')
+                        <a class="dropdown-item" href="{{ route('home') }}"><i class="fa-solid fa-user-tie me-3"></i>Admin Panel</a>
+                    @endif
                   </ul>
                   </li>
                   @else

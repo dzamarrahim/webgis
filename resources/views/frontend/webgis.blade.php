@@ -15,10 +15,17 @@
 
 @section('content')
     <div class="container-fluid my-4" style="padding-top: 3rem;">
-        <h1>Kabupaten: Aceh Tamiang</h1>
-        <p>Temperature: {{ $weatherData['main']['temp'] }}°C</p>
-        <p>Weather: {{ $weatherData['weather'][0]['description'] }}</p>
-        <img src="https://openweathermap.org/img/wn/{{ $weatherData['weather'][0]['icon'] }}@2x.png" alt="Weather Icon">
+        <div class="row bg-primary rounded-3 my-4 mx-4 text-white">
+            <div class="col-2 d-flex justify-content-center">
+                <img src="https://openweathermap.org/img/wn/{{ $weatherData['weather'][0]['icon'] }}@2x.png" alt="Weather Icon">
+            </div>
+            <div class="col-10">
+                <h1>Aceh Tamiang</h1>
+                <p>Temperature: {{ $weatherData['main']['temp'] }}°C</p>
+                <p>Weather: {{ $weatherData['weather'][0]['description'] }}</p>
+                <p id="clock"></p>
+            </div>
+        </div>
         <div class="row justify-content-center">
             <div class="col-md-12">
                         <div id="map" style="height: 500px"></div>
@@ -67,10 +74,11 @@
         });
 
         var kecamatan = L.layerGroup();
+        var spot = L.layerGroup();
         var map = L.map('map', {
             center: [{{ $centrePoint->coordinates }}],
             zoom: 10,
-            layers: [googleStreets, kecamatan],
+            layers: [googleStreets, kecamatan, spot],
             fullscreenControl: {
                 pseudoFullscreen: false
             }
@@ -112,21 +120,22 @@
                 marker = new L.Marker(new L.latLng(loc), {
                     title: title
                 })
-            markersLayer.addLayer(marker)
+            markersLayer.addLayer(spot)
 
             @foreach ($spot as $item)
                 L.marker([{{ $item->coordinates }}])
                     .bindPopup(
                         "<div class='my-2'><img src='{{ $item->getImageAsset() }}' class='img-fluid' width='700px'></div>" +
-                        "<div class='my-2'><strong>Nama Spot : </strong> <br>{{ $item->name }}</div>" +
+                        "<div class='my-2'><strong>{{ $item->name }}</strong></div>" +
                         "<div><a href='{{ route('detail-spot',$item->slug) }}' class='btn btn-outline-info'>Detail Spot</a></div>"
                     )
-                    .addTo(map)
+                    .addTo(spot)
             @endforeach
         }
 
         var overLayers = {
-            "Kecamatan": kecamatan 
+            "Kecamatan": kecamatan,
+            "Spot": spot
         };
 
         const layerControl = L.control.layers(baseLayers, overLayers).addTo(map)
@@ -151,17 +160,32 @@
                 return {
                     opacity: 1.0,
                     color: "black",
-                    fillOpacity: 1.0,
-                    fillColor: "red",
+                    fillOpacity: 0.8,
+                    fillColor: "{{$value->warna}}",
                 }
             },
         }).addTo(kecamatan);
 
         geoLayer.eachLayer(function(layer) {
-            layer.bindPopup("{{ $value->name }}");
+            layer.bindPopup("<div class='my-2'><strong>Nama Kecamatan : </strong> <br>{{ $value->name }}</div>" +
+            "<div class='my-2'><strong>Jumlah Penduduk : </strong> <br>{{ $value->jumlah_penduduk }}</div>" +
+            "<div class='my-2'><strong>Jumlah Desa : </strong> <br>{{ $value->jumlah_desa }}</div>" +
+            "<div class='my-2'><strong>Luas : </strong> <br>{{ $value->luas }}</div>");
         });
     });
 @endforeach
 
     </script>
+
+<script>
+    function updateClock() {
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock(); // Initialize clock immediately
+</script>
 @endpush
