@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>PUPR Aceh Tamiang</title>
+    <title>{{ $title }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
         <!-- Icon From Font Awesome -->
@@ -103,16 +103,15 @@
           </div>
           <div class="col col-lg-2 d-flex flex-column mb-lg-0 mb-4">
             <h5 class="text-white fw-bold mb-3">Menu</h5>
-            <a href="#" class="text-white-50 text-decoration-none mb-2">Home</a>
-            <a href="#" class="text-white-50 text-decoration-none mb-2">WebGIS</a>
-            <a href="#" class="text-white-50 text-decoration-none mb-2">About</a>
-            <a href="#" class="text-white-50 text-decoration-none mb-2">Contact</a>
+            <a href="{{ route('page') }}" class="text-white-50 text-decoration-none mb-2">Home</a>
+            <a href="{{ route('webgis') }}" class="text-white-50 text-decoration-none mb-2">WebGIS</a>
+            <a href="{{ route('contact') }}" class="text-white-50 text-decoration-none mb-2">Contact</a>
           </div>
           <div class="col col-lg-3 d-flex flex-column">
             <h5 class="text-white fw-bold mb-3">Contact</h5>
-            <a href="#" class="text-white-50 text-decoration-none mb-2 d-flex align-items-center gap-2"><i class="fa-solid fa-map-location-dot"></i>Jalan Ir. Juanda, Karang Baru, Aceh Tamiang</a>
+            <a href="https://maps.app.goo.gl/WVfh3dHMX5t3vfns8" target="_blank" class="text-white-50 text-decoration-none mb-2 d-flex align-items-center gap-2"><i class="fa-solid fa-map-location-dot"></i>Jalan Ir. Juanda, Karang Baru, Aceh Tamiang</a>
             <a href="#" class="text-white-50 text-decoration-none mb-2 d-flex align-items-center gap-2"><i class="fa-regular fa-envelope"></i>diskominfo@gmail.com</a>
-            <a href="" class="text-white-50 text-decoration-none mb-2 d-flex align-items-center gap-2"><i class="fa-solid fa-phone"></i>+62 123 4567 8901</a>
+            <a href="#" class="text-white-50 text-decoration-none mb-2 d-flex align-items-center gap-2"><i class="fa-solid fa-phone"></i>+62 123 4567 8901</a>
           </div>
         </div>
         <div class="row">

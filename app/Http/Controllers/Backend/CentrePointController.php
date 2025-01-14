@@ -14,7 +14,9 @@ class CentrePointController extends Controller
     public function index()
     {
         $user = auth()->user();
-        return view('backend.CentrePoint.index', compact('user'));
+        return view('backend.CentrePoint.index', [
+            "title" => "PUPR GIS Aceh Tamiang | Center Point Index"
+        ], compact('user'));
     }
 
     /**
@@ -23,7 +25,9 @@ class CentrePointController extends Controller
     public function create()
     {
         $user = auth()->user();
-        return view('backend.CentrePoint.create', compact('user'));
+        return view('backend.CentrePoint.create', [
+            "title" => "PUPR GIS Aceh Tamiang | Center Point Create"
+        ], compact('user'));
     }
 
     /**
@@ -61,7 +65,10 @@ class CentrePointController extends Controller
     {
         $user = auth()->user();
         $centrePoint = Centre_Point::findOrFail($centrePoint->id);
-        return view('backend.CentrePoint.edit', ['centrePoint' => $centrePoint], compact('user'));
+        return view('backend.CentrePoint.edit', [
+            'centrePoint' => $centrePoint,
+            'title' => 'PUPR GIS Aceh Tamiang | Center Point Edit'
+        ], compact('user'));
     }
 
     /**

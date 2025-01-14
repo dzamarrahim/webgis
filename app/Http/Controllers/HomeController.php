@@ -29,57 +29,79 @@ class HomeController extends Controller
     public function index()
     {
         $user = auth()->user();
-        return view('home', compact('user'));
+        return view('home', [
+            "title" => "PUPR GIS Aceh Tamiang | Dashboard"
+        ], compact('user'));
     }
 
     public function simple_map() {
         $user = auth()->user();
-        return view('leaflet.simple-map', compact('user'));
+        return view('leaflet.simple-map', [
+            "title" => "PUPR GIS Aceh Tamiang | Simple Map Leaflet"
+        ], compact('user'));
     }
 
     public function marker() {
         $user = auth()->user();
-        return view('leaflet.marker', compact('user'));
+        return view('leaflet.marker', [
+            "title" => "PUPR GIS Aceh Tamiang | Marker Leaflet"
+        ], compact('user'));
     }
 
     public function circle() {
         $user = auth()->user();
-        return view('leaflet.circle', compact('user'));
+        return view('leaflet.circle', [
+            "title" => "PUPR GIS Aceh Tamiang | Circle Leaflet"
+        ], compact('user'));
     }
 
     public function polygon() {
         $user = auth()->user();
-        return view('leaflet.polygon', compact('user'));
+        return view('leaflet.polygon', [
+            "title" => "PUPR GIS Aceh Tamiang | Polygon Leaflet"
+        ], compact('user'));
     }
     
     public function polyline() {
         $user = auth()->user();
-        return view('leaflet.polyline', compact('user'));
+        return view('leaflet.polyline', [
+            "title" => "PUPR GIS Aceh Tamiang | Polyline Leaflet"
+        ], compact('user'));
     }
     
     public function rectangle() {
         $user = auth()->user();
-        return view('leaflet.rectangle', compact('user'));
+        return view('leaflet.rectangle', [
+            "title" => "PUPR GIS Aceh Tamiang | Rectangle Leaflet"
+        ], compact('user'));
     }
 
     public function layers() {
         $user = auth()->user();
-        return view('leaflet.layer', compact('user'));
+        return view('leaflet.layer', [
+            "title" => "PUPR GIS Aceh Tamiang | Layer Leaflet"
+        ], compact('user'));
     }
 
     public function layer_group() {
         $user = auth()->user();
-        return view('leaflet.layer_group', compact('user'));
+        return view('leaflet.layer_group', [
+            "title" => "PUPR GIS Aceh Tamiang | Layer Group Leaflet"
+        ], compact('user'));
     }
 
     public function geojson() {
         $user = auth()->user();
-        return view('leaflet.geojson', compact('user'));
+        return view('leaflet.geojson', [
+            "title" => "PUPR GIS Aceh Tamiang | GeoJSON Leaflet"
+        ], compact('user'));
     }
 
     public function getCoordinate() {
         $user = auth()->user();
-        return view('leaflet.get_coordinate', compact('user'));
+        return view('leaflet.get_coordinate', [
+            "title" => "PUPR GIS Aceh Tamiang | Get Coordinate Leaflet"
+        ], compact('user'));
     }
 
     public function getWeatherByRegion(Request $request)
@@ -103,7 +125,9 @@ class HomeController extends Controller
         $weatherData = json_decode($response->getBody(), true);
 
         // Kirim data ke view
-        return view('leaflet.cuaca', compact('weatherData', 'user'));
+        return view('leaflet.cuaca', [
+            "title" => "PUPR GIS Aceh Tamiang | Open Weather Map API"
+        ], compact('weatherData', 'user'));
     } catch (\Exception $e) {
         return response()->json(['error' => $e->getMessage()], 500);
     }

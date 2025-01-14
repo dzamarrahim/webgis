@@ -14,7 +14,9 @@ class UsersController extends Controller
     public function index()
     {
         $user = auth()->user();
-        return view('backend.Users.index', compact('user'));
+        return view('backend.Users.index', [
+            "title" => "PUPR GIS Aceh Tamiang | User Index"
+        ], compact('user'));
     }
 
     /**

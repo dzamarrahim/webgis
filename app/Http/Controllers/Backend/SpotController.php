@@ -18,7 +18,9 @@ class SpotController extends Controller
     public function index()
     {
         $user = auth()->user();
-        return view('backend.Spot.index', compact('user'));
+        return view('backend.Spot.index', [
+            "title" => "PUPR GIS Aceh Tamiang | Spot Index"
+        ], compact('user'));
     }
 
     /**
@@ -28,7 +30,10 @@ class SpotController extends Controller
     {
         $user = auth()->user();
         $centrePoint = Centre_Point::get()->first();
-        return view('backend.Spot.create', ['centrePoint' => $centrePoint], compact('user'));
+        return view('backend.Spot.create', [
+            'centrePoint' => $centrePoint,
+            'title' => 'PUPR GIS Aceh Tamiang | Spot Create'
+        ], compact('user'));
     }
 
     /**
@@ -76,11 +81,13 @@ class SpotController extends Controller
      */
     public function edit(Spot $spot) 
     {
+        $user = auth()->user();
         $centrePoint = Centre_Point::get()->first();
         return view('backend.Spot.edit', [
             'centrePoint' => $centrePoint,
-            'spot' => $spot
-        ]);
+            'spot' => $spot,
+            'title' => 'PUPR GIS Aceh Tamiang | Spot Edit'
+        ], compact('user'));
     }
 
     /**

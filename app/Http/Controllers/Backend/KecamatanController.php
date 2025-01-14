@@ -17,7 +17,9 @@ class KecamatanController extends Controller
     public function index()
     {
         $user = auth()->user();
-        return view('backend.Kecamatan.index', compact('user'));
+        return view('backend.Kecamatan.index', [
+            "title" => "PUPR GIS Aceh Tamiang | Kecamatan Index"
+        ], compact('user'));
     }
 
     /**
@@ -27,7 +29,10 @@ class KecamatanController extends Controller
     {
         $user = auth()->user();
         $centrePoint = Centre_Point::get()->first();
-        return view('backend.Kecamatan.create', ['centrePoint' => $centrePoint], compact('user'));
+        return view('backend.Kecamatan.create', [
+            'centrePoint' => $centrePoint,
+            'title' => 'PUPR GIS Aceh Tamiang | Kecamatan Create'
+        ], compact('user'));
     }
 
     /**
@@ -83,7 +88,8 @@ class KecamatanController extends Controller
         $centrePoint = Centre_Point::get()->first();
         return view('backend.Kecamatan.edit', [
             'centrePoint' => $centrePoint,
-            'kecamatan' => $kecamatan
+            'kecamatan' => $kecamatan,
+            'title' => 'PUPR GIS Aceh Tamiang | Kecamatan Edit'
         ], compact('user'));
     }
 

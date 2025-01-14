@@ -17,11 +17,15 @@ class FrontendController extends Controller
     
      public function page() {
         $user = auth()->user();
-        return view('frontend.home', compact('user'));
+        return view('frontend.home', [
+            "title" => "PUPR GIS Aceh Tamiang | Home"
+        ], compact('user'));
     }
 
     public function contact() {
-        return view('frontend.contact');
+        return view('frontend.contact', [
+            "title" => "PUPR GIS Aceh Tamiang | Contact"
+        ]);
     }
     
     public function spots(Request $request) {
@@ -49,7 +53,8 @@ class FrontendController extends Controller
         return view('frontend.webgis', [
             'centrePoint' => $centrePoint,
             'spot' => $spot,
-            'kecamatan' => $kecamatan
+            'kecamatan' => $kecamatan,
+            'title' => 'PUPR GIS Aceh Tamiang | WebGIS'
         ], compact('weatherData'));
 
     } catch (\Exception $e) {
@@ -60,6 +65,9 @@ class FrontendController extends Controller
     public function detailSpot($slug)
     {
         $spot = Spot::where('slug',$slug)->first();
-        return view('frontend.detail',['spot' => $spot]);
+        return view('frontend.detail', [
+            'spot' => $spot,
+            'title' => 'PUPR GIS Aceh Tamiang | Detail Spot'
+        ]);
     }
 }
