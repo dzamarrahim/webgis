@@ -91,7 +91,9 @@
             <div class="col-12 d-flex align-items-center justify-content-center">
                 <div class="bg-white shadow border-0 rounded border-light p-4 p-lg-5 w-100 fmxw-500">
                     <div class="text-center text-md-center mb-4 mt-md-0">
-                        <h1 class="mb-0 h3">Sign in to our platform</h1>
+                        <img src="{{ asset('icon/pupr.jpg') }}" alt="" style="width: 60px; float: left;">
+                        <h5>PUPR GIS Aceh Tamiang</h5>
+                        <h1 class="mb-0 h3">Sign In</h1>
                     </div>
                     <form action="{{ route('login') }}" class="mt-4" method="POST">
                         @csrf
@@ -162,18 +164,12 @@
                         <span class="fw-normal">or login with</span>
                     </div>
                     <div class="d-flex justify-content-center my-4">
-                        <a href="#" class="btn btn-icon-only btn-pill btn-outline-gray-500 me-2"
+                        <a href="https://instagram.com/dzamar.rahim" class="btn btn-icon-only btn-pill btn-outline-gray-500 me-2"
                             aria-label="facebook button" title="facebook button">
-                            <svg class="icon icon-xxs" aria-hidden="true" focusable="false" data-prefix="fab"
-                                data-icon="facebook-f" role="img" xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 320 512">
-                                <path fill="currentColor"
-                                    d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z">
-                                </path>
-                            </svg>
+                            <i class="fa-brands fa-instagram"></i>
                         </a>
-                        <a href="#" class="btn btn-icon-only btn-pill btn-outline-gray-500 me-2"
-                            aria-label="twitter button" title="twitter button">
+                        <a href="https://x.com/dzamarrahim10" class="btn btn-icon-only btn-pill btn-outline-gray-500 me-2"
+                            aria-label="twitter button" title="twitter button" target="_blank">
                             <svg class="icon icon-xxs" aria-hidden="true" focusable="false" data-prefix="fab"
                                 data-icon="twitter" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                                 <path fill="currentColor"
@@ -181,7 +177,7 @@
                                 </path>
                             </svg>
                         </a>
-                        <a href="#" class="btn btn-icon-only btn-pill btn-outline-gray-500"
+                        <a href="https://github.com/dzamarrahim" class="btn btn-icon-only btn-pill btn-outline-gray-500"
                             aria-label="github button" title="github button">
                             <svg class="icon icon-xxs" aria-hidden="true" focusable="false" data-prefix="fab"
                                 data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg"
