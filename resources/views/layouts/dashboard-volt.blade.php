@@ -5,6 +5,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <!-- Primary Meta Tags -->
     <title>{{ $title }}</title>
+
+    {{-- Font Awesome --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="title" content="Volt - Free Bootstrap 5 Dashboard">
     <meta name="author" content="Themesberg">
@@ -107,6 +111,14 @@
                 <li role="separator" class="dropdown-divider mt-2 mb-3 border-gray-700"></li>
 
                 <!--SIDEBAR MENU-->
+                    <li class="nav-item {{ Request::is('home') ? 'active' : '' }}">
+                    <a href="{{ route('home') }}" class="nav-link d-flex align-items-center">
+                        <span class="sidebar-icon">
+                            <i class="fas fa-home"></i>
+                        </span>
+                        <span class="mt-1 ms-3 sidebar-text">Dashboard</span>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <span class="nav-link  collapsed  d-flex justify-content-between align-items-center"
                         data-bs-toggle="collapse" data-bs-target="#submenu-app">
@@ -132,14 +144,6 @@
                     </span>
                     <div class="multi-level collapse " role="list" id="submenu-app" aria-expanded="false">
                         <ul class="flex-column nav">
-                            <li class="nav-item {{ Request::is('home') ? 'active' : '' }}">
-                                <a href="{{ route('home') }}" class="nav-link">
-                                    <span class="sidebar-icon">
-                                        <i class="fas fa-home"></i>
-                                    </span>
-                                    <span class="sidebar-text">Dashboard</span>
-                                </a>
-                            </li>
 
                             <li class="nav-item {{ Request::is('simple-map') ? 'active' : '' }}">
                                 <a href="{{ route('simple-map') }}" class="nav-link ">
@@ -286,22 +290,26 @@
                         <li class="nav-item">
                           <a class="nav-link"
                             href="{{ route('centre-point.index') }}">
+                            <i class="fa-solid fa-map-location-dot me-2"></i>
                             <span class="sidebar-text">Center Point</span>
                           </a>
                         </li>
                         <li class="nav-item ">
                           <a class="nav-link" href="{{route('spot.index')}}">
+                            <i class="fa-solid fa-map-location-dot me-2"></i>
                             <span class="sidebar-text">Spot</span>
                           </a>
                         </li>
 
                         <li class="nav-item ">
                           <a class="nav-link" href="{{ route('kecamatan.index') }}">
+                            <i class="fa-solid fa-map-location-dot me-2"></i>
                             <span class="sidebar-text">Kecamatan</span>
                           </a>
                         </li>
                         <li class="nav-item ">
                           <a class="nav-link" href="{{ route('users.index') }}">
+                            <i class="fa-solid fa-user me-2"></i>
                             <span class="sidebar-text">Users</span>
                           </a>
                         </li>
@@ -362,12 +370,7 @@
                                 </a>
                                 <div role="separator" class="dropdown-divider my-1"></div>
                                 <a class="dropdown-item d-flex align-items-center" href="{{ route('page') }}">
-                                    <svg class="dropdown-icon text-gray-400 me-2" fill="currentColor"
-                                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd"
-                                            d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
+                                    <i class="fa-solid fa-house" style="margin-right: 12px;"></i>
                                     Home
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="{{ route('logout') }}"

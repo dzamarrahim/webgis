@@ -86,7 +86,7 @@
         <div class="container">
             <div class="row">
                 <div class="col text-center">
-                    <h1 class="text-white mb-4 fw-bold animate__animated animate__zoomIn">Selamat Datang <br> WebGIS PUPR Aceh Tamiang</h1>
+                    <h1 class="text-white mb-4 fw-bold animate__animated animate__zoomIn">Selamat Datang <br> PUPR GIS Aceh Tamiang</h1>
                     <p class="text-white mb-4 text-opacity-75"></p>
                 </div>
             </div>
@@ -156,7 +156,7 @@
                 </div>
                 <div class="col ms-4">
                     <h3 class="text-white mb-4" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="500">WebGIS Kabupaten Aceh Tamiang</h3>
-                    <p class="text-white mb-4" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="1000">WebGIS adalah pemetaan digital yang memanfaatkan jaringan internet sebagai media komunikasi yang berfungsi mendistribusikan, mempublikasikan, mengintegrasikan, mengkomunikasikan dan menyediakan informasi dalam bentuk teks, peta digital serta menjalankan fungsi–fungsi analisis dan query yang terkait dengan GIS. Untuk mengakses WebGIS Kabupaten Aceh Tamiang silahkan klik link berikut</p>
+                    <p class="text-white mb-4" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="1000">WebGIS adalah pemetaan digital yang memanfaatkan jaringan internet sebagai media komunikasi yang berfungsi mendistribusikan, mempublikasikan, mengintegrasikan, mengkomunikasikan dan menyediakan informasi dalam bentuk teks, peta digital serta menjalankan fungsi - fungsi analisis dan query yang terkait dengan GIS. Untuk mengakses WebGIS Kabupaten Aceh Tamiang silahkan klik link berikut</p>
                     <a href="{{ route('webgis') }}" class="btn btn-success btn-lg px-4 py-2 rounded-1" target="_blank" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="500">WebGIS Aceh Tamiang</a>
                 </div>
             </div>
@@ -199,7 +199,7 @@
                             </h2>
                             <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                 <div class="accordion-body text-white">
-                                WebGIS adalah pemetaan digital yang memanfaatkan jaringan internet sebagai media komunikasi yang berfungsi mendistribusikan, mempublikasikan, mengintegrasikan, mengkomunikasikan dan menyediakan informasi dalam bentuk teks, peta dijital serta menjalankan fungsi–fungsi analisis dan query yang terkait dengan GIS. Untuk mengakses WebGIS Kabupaten Aceh Tamiang silahkan klik link berikut
+                                WebGIS adalah pemetaan digital yang memanfaatkan jaringan internet sebagai media komunikasi yang berfungsi mendistribusikan, mempublikasikan, mengintegrasikan, mengkomunikasikan dan menyediakan informasi dalam bentuk teks, peta dijital serta menjalankan fungsi - fungsi analisis dan query yang terkait dengan GIS. Untuk mengakses WebGIS Kabupaten Aceh Tamiang silahkan klik link berikut
                                 </div>
                             </div>
                         </div>

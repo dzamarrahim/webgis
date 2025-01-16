@@ -39,7 +39,7 @@
         <div class="container">
         <span class="navbar-brand fw-bold">
             <img src="{{ asset('icon/pupr.jpg') }}" alt="" height="40px" class="d-inline-block align-text-center rounded">
-            PUPR Aceh Tamiang
+            PUPR GIS Aceh Tamiang
         </span>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"

@@ -29,9 +29,12 @@ class HomeController extends Controller
     public function index()
     {
         $user = auth()->user();
+        $centerPoint = Centre_Point::count();
+        $spot = Spot::count();
+        $kecamatan = Kecamatan::count();
         return view('home', [
             "title" => "PUPR GIS Aceh Tamiang | Dashboard"
-        ], compact('user'));
+        ], compact('user', 'centerPoint', 'spot', 'kecamatan'));
     }
 
     public function simple_map() {
