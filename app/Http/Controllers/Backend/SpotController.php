@@ -29,9 +29,7 @@ class SpotController extends Controller
     public function create()
     {
         $user = auth()->user();
-        $centrePoint = Centre_Point::get()->first();
         return view('backend.Spot.create', [
-            'centrePoint' => $centrePoint,
             'title' => 'PUPR GIS Aceh Tamiang | Spot Create'
         ], compact('user'));
     }
@@ -82,9 +80,7 @@ class SpotController extends Controller
     public function edit(Spot $spot) 
     {
         $user = auth()->user();
-        $centrePoint = Centre_Point::get()->first();
         return view('backend.Spot.edit', [
-            'centrePoint' => $centrePoint,
             'spot' => $spot,
             'title' => 'PUPR GIS Aceh Tamiang | Spot Edit'
         ], compact('user'));

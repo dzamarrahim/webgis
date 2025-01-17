@@ -29,7 +29,6 @@ class FrontendController extends Controller
     }
     
     public function spots(Request $request) {
-        $centrePoint = Centre_Point::get()->first();
         $spot = Spot::get();
         $kecamatan = Kecamatan::get();
 
@@ -51,7 +50,6 @@ class FrontendController extends Controller
             $weatherData = json_decode($response->getBody(), true);
 
         return view('frontend.webgis', [
-            'centrePoint' => $centrePoint,
             'spot' => $spot,
             'kecamatan' => $kecamatan,
             'title' => 'PUPR GIS Aceh Tamiang | WebGIS'

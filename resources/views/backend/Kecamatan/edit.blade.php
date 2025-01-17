@@ -117,12 +117,12 @@
         });
 
         var map = L.map('map', {
-            center:[{{ $kecamatan->coordinates }}],
+            center:[4.22753516277714, 98.0612424068228],
             zoom:10,
             layers:[osm]
         })
 
-        var marker = L.marker([{{ $kecamatan->coordinates }}], {draggable:true}).addTo(map);
+        var marker = L.marker([4.22753516277714, 98.0612424068228], {draggable:true}).addTo(map);
 
         var baseMaps = {
             'Open Street Map': osm,
@@ -162,5 +162,29 @@
             $('#latitude').val(coordinate.lat).keyup()
             $('#longitude').val(coordinate.lng).keyup()
         })
+
+                // GeoJSON
+                let geoLayer;
+
+    // Ambil file GeoJSON secara dinamis
+    $.getJSON("{{ asset('storage/geojson/' . $kecamatan->geojson) }}", function(data) {
+        geoLayer = L.geoJson(data, {
+            style: function(feature) {
+                return {
+                    opacity: 1.0,
+                    color: "black",
+                    fillOpacity: 0.8,
+                    fillColor: "{{$kecamatan->warna}}",
+                }
+            },
+        }).addTo(map);
+
+        geoLayer.eachLayer(function(layer) {
+            layer.bindPopup("<div class='my-2'><strong>Nama Kecamatan : </strong> <br>{{ $kecamatan->name }}</div>" +
+            "<div class='my-2'><strong>Jumlah Penduduk : </strong> <br>{{ $kecamatan->jumlah_penduduk }}</div>" +
+            "<div class='my-2'><strong>Jumlah Desa : </strong> <br>{{ $kecamatan->jumlah_desa }}</div>" +
+            "<div class='my-2'><strong>Luas : </strong> <br>{{ $kecamatan->luas }}</div>");
+        });
+    });
     </script>
 @endpush

@@ -28,9 +28,7 @@ class KecamatanController extends Controller
     public function create()
     {
         $user = auth()->user();
-        $centrePoint = Centre_Point::get()->first();
         return view('backend.Kecamatan.create', [
-            'centrePoint' => $centrePoint,
             'title' => 'PUPR GIS Aceh Tamiang | Kecamatan Create'
         ], compact('user'));
     }
@@ -85,9 +83,7 @@ class KecamatanController extends Controller
     public function edit(Kecamatan $kecamatan)
     {
         $user = auth()->user();
-        $centrePoint = Centre_Point::get()->first();
         return view('backend.Kecamatan.edit', [
-            'centrePoint' => $centrePoint,
             'kecamatan' => $kecamatan,
             'title' => 'PUPR GIS Aceh Tamiang | Kecamatan Edit'
         ], compact('user'));

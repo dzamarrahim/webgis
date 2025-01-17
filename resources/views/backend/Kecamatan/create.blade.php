@@ -116,12 +116,12 @@
         });
 
         var map = L.map('map', {
-            center:[{{ $centrePoint->coordinates }}],
+            center:[4.22753516277714, 98.0612424068228],
             zoom:10,
             layers:[osm]
         })
 
-        var marker = L.marker([{{ $centrePoint->coordinates }}], {draggable:true}).addTo(map);
+        var marker = L.marker([4.22753516277714, 98.0612424068228], {draggable:true}).addTo(map);
 
         var baseMaps = {
             'Open Street Map': osm,

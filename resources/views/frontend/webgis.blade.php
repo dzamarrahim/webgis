@@ -76,7 +76,7 @@
         var kecamatan = L.layerGroup();
         var spot = L.layerGroup();
         var map = L.map('map', {
-            center: [{{ $centrePoint->coordinates }}],
+            center: [ 4.22753516277714, 98.0612424068228 ],
             zoom: 10,
             layers: [googleStreets, kecamatan, spot],
             fullscreenControl: {

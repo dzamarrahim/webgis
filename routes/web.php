@@ -42,13 +42,11 @@ Route::middleware(['admin'])->group(function() {
     Route::get('/cuaca', [App\Http\Controllers\HomeController::class, 'getWeatherByRegion'])->name('getWeatherByRegion');
 
     // Route Datatable
-    Route::get('/centre-point/data', [\App\Http\Controllers\Backend\DataController::class, 'centrepoint'])->name('centre-point.data');
     Route::get('/spot/data', [\App\Http\Controllers\Backend\DataController::class, 'spot'])->name('spot.data');
     Route::get('/kecamatan/data', [\App\Http\Controllers\Backend\DataController::class, 'kecamatan'])->name('kecamatan.data');
     Route::get('/user/data', [\App\Http\Controllers\Backend\DataController::class, 'user'])->name('user.data');
 
     // Backend
-    Route::resource('/centre-point', (\App\Http\Controllers\Backend\CentrePointController::class));
     Route::resource('/spot', (\App\Http\Controllers\Backend\SpotController::class));
     Route::resource('/kecamatan', (\App\Http\Controllers\Backend\KecamatanController::class));
     Route::resource('/users', (\App\Http\Controllers\Backend\UsersController::class));

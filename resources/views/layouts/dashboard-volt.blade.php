@@ -287,13 +287,6 @@
                     <div class="multi-level collapse " role="list"
                       id="submenu-components" aria-expanded="false">
                       <ul class="flex-column nav">
-                        <li class="nav-item">
-                          <a class="nav-link"
-                            href="{{ route('centre-point.index') }}">
-                            <i class="fa-solid fa-map-location-dot me-2"></i>
-                            <span class="sidebar-text">Center Point</span>
-                          </a>
-                        </li>
                         <li class="nav-item ">
                           <a class="nav-link" href="{{route('spot.index')}}">
                             <i class="fa-solid fa-map-location-dot me-2"></i>

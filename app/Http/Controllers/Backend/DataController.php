@@ -11,15 +11,6 @@ use App\Http\Controllers\Controller;
 
 class DataController extends Controller
 {
-    public function centrepoint() {
-        $centrepoint = Centre_Point::latest()->get();
-        return datatables()->of($centrepoint)
-        ->addColumn('action', 'backend.CentrePoint.action')
-        ->addIndexColumn()
-        ->rawColumns(['action'])
-        ->toJson();
-    }
-
     public function spot() {
         $spot = Spot::latest()->get();
         return datatables()->of($spot)
