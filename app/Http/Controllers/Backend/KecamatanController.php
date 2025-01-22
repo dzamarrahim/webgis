@@ -72,9 +72,12 @@ class KecamatanController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id): JsonResponse
+    public function show(Kecamatan $kecamatan)
     {
-        // 
+        $user = auth()->user();
+        return view('backend.Kecamatan.show', [
+            'title' => 'PUPR GIS Aceh Tamiang | Kecamatan Show'
+        ], compact('kecamatan', 'user'));
     }
 
     /**

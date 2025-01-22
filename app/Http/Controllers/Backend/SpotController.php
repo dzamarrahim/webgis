@@ -69,9 +69,12 @@ class SpotController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Spot $spot)
     {
-        //
+        $user = auth()->user();
+        return view('backend.Spot.show', [
+            'title' => 'PUPR GIS Aceh Tamiang | Spot Show'
+        ], compact('spot', 'user'));
     }
 
     /**
