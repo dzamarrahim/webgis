@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Spot;
+use App\Models\User;
 use App\Models\Kecamatan;
 use App\Models\Centre_Point;
 use Illuminate\Http\Request;
@@ -29,11 +30,12 @@ class HomeController extends Controller
     public function index()
     {
         $user = auth()->user();
+        $usercount = User::count();
         $spot = Spot::count();
         $kecamatan = Kecamatan::count();
         return view('home', [
             "title" => "PUPR GIS Aceh Tamiang | Dashboard"
-        ], compact('user', 'spot', 'kecamatan'));
+        ], compact('user', 'spot', 'kecamatan', 'usercount'));
     }
 
     public function simple_map() {

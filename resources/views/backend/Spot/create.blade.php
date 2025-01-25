@@ -48,9 +48,10 @@
                             </div>
                             <div class="form-group my-3">
                                 <label for="">Upload Gambar</label>
+                                <img id="image-preview" style="display: none; max-width: 300px; margin-bottom: 20px;">
                                 <input type="file" class="form-control @error('image')
                                     is-invalid
-                                @enderror" name="image">
+                                @enderror" name="image" onchange="previewImage(event)">
                                 @error('image')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -145,4 +146,20 @@
             $('#longitude').val(coordinate.lng).keyup()
         })
     </script>
+    <script>
+        function previewImage(event) {
+            const imagePreview = document.getElementById('image-preview');
+            const file = event.target.files[0];
+    
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imagePreview.src = e.target.result;
+                    imagePreview.style.display = 'block'; // Tampilkan preview
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+    
 @endpush

@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('spots', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('kecamatan_id')->constrained('kecamatans')->onDelete('cascade');
             $table->string('name');
             $table->string('slug');
             $table->string('coordinates');

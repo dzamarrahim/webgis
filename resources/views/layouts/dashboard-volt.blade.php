@@ -119,7 +119,7 @@
                         <span class="mt-1 ms-3 sidebar-text">Dashboard</span>
                     </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <span class="nav-link  collapsed  d-flex justify-content-between align-items-center"
                         data-bs-toggle="collapse" data-bs-target="#submenu-app">
                         <span>
@@ -268,7 +268,7 @@
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li> --}}
                 
                 <li class="nav-item">
                     <span

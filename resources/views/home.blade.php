@@ -24,6 +24,17 @@
 
 @extends('layouts.dashboard-volt')
 
+@section('css')
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""/>
+    <style>
+        #map {
+            height: 500px;
+        }
+    </style>
+@endsection
+
 @section('content')
 <div class="col-12 col-sm-6 col-xl-4 mb-4">
     <div class="card border-0 shadow">
@@ -41,8 +52,8 @@
                 </div>
                 <div class="col-12 col-xl-7 px-xl-0">
                     <div class="d-none d-sm-block">
-                        <h2 class="h6 text-gray-400 mb-0">Center Point</h2>
-                        {{-- <h3 class="fw-extrabold mb-2">{{ $centerPoint }}</h3> --}}
+                        <h2 class="h6 text-black-400 mb-0">User</h2>
+                        <h3 class="fw-extrabold mb-2">{{ $usercount }}</h3>
                     </div>
                 </div>
             </div>
@@ -66,7 +77,7 @@
                 </div>
                 <div class="col-12 col-xl-7 px-xl-0">
                     <div class="d-none d-sm-block">
-                        <h2 class="h6 text-gray-400 mb-0">Spot</h2>
+                        <h2 class="h6 text-black-400 mb-0">Spot</h2>
                         <h3 class="fw-extrabold mb-2">{{ $spot }}</h3>
                     </div>
                 </div>
@@ -91,7 +102,7 @@
                 </div>
                 <div class="col-12 col-xl-7 px-xl-0">
                     <div class="d-none d-sm-block">
-                        <h2 class="h6 text-gray-400 mb-0">Kecamatan</h2>
+                        <h2 class="h6 text-black-400 mb-0">Kecamatan</h2>
                         <h3 class="fw-extrabold mb-2">{{ $kecamatan }}</h3>
                     </div>
                 </div>
@@ -99,4 +110,14 @@
         </div>
     </div>
 </div>
+<div class="col-md-12">
+    <div id="map"></div>
+</div>
 @endsection
+
+@push('javascript')
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin="">
+    </script>
+    

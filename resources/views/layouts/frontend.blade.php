@@ -64,9 +64,9 @@
                   <li class="nav-item">
                     <a class="nav-link" href="{{ route('webgis') }}" target="_blank">WebGIS</a>
                   </li>
-                  <li class="nav-item">
+                  {{-- <li class="nav-item">
                     <a class="nav-link" href="{{ route('contact') }}">Contact</a>
-                  </li>
+                  </li> --}}
                   @auth
                   <li class="nav-item dropdown">
                     <p class="text-white mt-2 ms-3" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-user me-2" style="color: white"></i>{{ auth()->user()->name }}</p>
