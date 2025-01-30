@@ -23,6 +23,11 @@
                             <p>{{ $spot->name }}</p>
                         </div>
                         <div class="show-list">
+                            <strong>Kecamatan</strong>
+                            <p>{{ $spot->kecamatan ? $spot->kecamatan->name : 'Tidak ada kecamatan' }}</p>
+                            <!-- Menampilkan Nama Kecamatan -->
+                        </div>
+                        <div class="show-list">
                             <strong>Foto</strong>
                         </div>
                         <img src="{{ $spot->getImageAsset() }}" alt="" width="200px">

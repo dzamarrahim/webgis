@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\Spot;
+use App\Models\Kecamatan;
 use Illuminate\Support\Str;
 use App\Models\Centre_Point;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use PDF;
 
 class SpotController extends Controller
 {
@@ -29,9 +31,10 @@ class SpotController extends Controller
     public function create()
     {
         $user = auth()->user();
+        $kecamatans = Kecamatan::all();
         return view('backend.Spot.create', [
             'title' => 'PUPR GIS Aceh Tamiang | Spot Create'
-        ], compact('user'));
+        ], compact('user', 'kecamatans'));
     }
 
     /**
@@ -43,6 +46,7 @@ class SpotController extends Controller
             'coordinate' => 'required',
             'name' => 'required',
             'description' => 'required',
+            'kecamatan_id' => 'required|exists:kecamatans,id',
             'image' => 'file|image|mimes:png,jpg,jpeg'
         ]);
 
@@ -57,6 +61,7 @@ class SpotController extends Controller
         $spot->slug = Str::slug($request->name, '-');
         $spot->description = $request->input('description');
         $spot->coordinates = $request->input('coordinate');
+        $spot->kecamatan_id = $request->input('kecamatan_id'); // Menyimpan kecamatan_id
         $spot->save();
 
         if($spot) {
@@ -142,4 +147,20 @@ class SpotController extends Controller
         $spot->delete();
         return redirect()->back();
     }
+
+    public function cetakPdf(Spot $spot)
+{
+    // Mendapatkan latitude dan longitude
+    $coordinates = explode(',', $spot->coordinates);
+    $latitude = $coordinates[0];
+    $longitude = $coordinates[1];
+
+    // Membuat URL gambar peta statis dari OpenStreetMap
+    $mapUrl = "https://staticmap.openstreetmap.de/staticmap.php?center={$latitude},{$longitude}&zoom=15&size=600x300&markers={$latitude},{$longitude},red-pushpin";
+
+    // Membuat PDF dan menyertakan peta di dalamnya
+    $pdf = PDF::loadView('backend.spot.cetak', compact('spot', 'mapUrl'));
+
+    return $pdf->stream("Spot_{$spot->name}.pdf"); // Menampilkan PDF di browser
+}
 }

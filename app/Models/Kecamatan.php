@@ -18,4 +18,10 @@ class Kecamatan extends Model
 
         return 'No File';
     }
+
+    public function spots()
+{
+    return $this->hasMany(Spot::class);
+}
+
 }

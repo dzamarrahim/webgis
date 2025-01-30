@@ -47,6 +47,18 @@
                                 @enderror
                             </div>
                             <div class="form-group my-3">
+                                <label for="kecamatan_id">Kecamatan</label>
+                                <select name="kecamatan_id" class="form-control @error('kecamatan_id') is-invalid @enderror">
+                                    <option value="">-- Pilih Kecamatan --</option>
+                                    @foreach ($kecamatans as $kecamatan)
+                                        <option value="{{ $kecamatan->id }}">{{ $kecamatan->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('kecamatan_id')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group my-3">
                                 <label for="">Upload Gambar</label>
                                 <img id="image-preview" style="display: none; max-width: 300px; margin-bottom: 20px;">
                                 <input type="file" class="form-control @error('image')

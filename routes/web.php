@@ -47,6 +47,7 @@ Route::middleware(['admin'])->group(function() {
     Route::get('/user/data', [\App\Http\Controllers\Backend\DataController::class, 'user'])->name('user.data');
 
     // Backend
+    Route::get('/spot/{spot}/cetak', [\App\Http\Controllers\Backend\SpotController::class, 'cetakPdf'])->name('spot.cetak');
     Route::resource('/spot', (\App\Http\Controllers\Backend\SpotController::class));
     Route::resource('/kecamatan', (\App\Http\Controllers\Backend\KecamatanController::class));
     Route::resource('/users', (\App\Http\Controllers\Backend\UsersController::class));

@@ -22,4 +22,10 @@ class Spot extends Model
 
         return 'https://placehold.co/600x400?text=No+Image';
     }
+
+        public function kecamatan()
+    {
+        return $this->belongsTo(Kecamatan::class);
+    }
+
 }
